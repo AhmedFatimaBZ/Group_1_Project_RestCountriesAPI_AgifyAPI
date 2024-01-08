@@ -5,7 +5,7 @@
 
 ![Guess My Age Wall And Art Print](https://github.com/KateRasheed/Group_1_Project_RestCountriesAPI_AgifyAPI/assets/127479723/5e65f028-c289-4262-b2f9-520283eaa85f)
 
-**Rest Countries:** Thinking about building an application where you will need data about different countries of the world? Here is the API you will need. Supported by donations, this free API provides information about the country’s currency, capital, region, language, etc. Rest Countries was used to suggest Vacation spots in different countries.
+**Rest Countries:** Thinking about building an application where you will need data about different countries of the world? Here is the API you will need. The REST Countries Project involves retrieving and presenting comprehensive data about countries. This API provides a wealth of data, including population, timezones, languages spoken, and more. Rest Countries was used to suggest Vacation spots in different countries.
 
 ![Westin Resort in Cancun, Mexico _ Tropical honeymoon destinations, Tropical honeymoon, Mexico beache](https://github.com/KateRasheed/Group_1_Project_RestCountriesAPI_AgifyAPI/assets/127479723/a180288e-d767-4ee3-a43b-09f81242b81f)
 
