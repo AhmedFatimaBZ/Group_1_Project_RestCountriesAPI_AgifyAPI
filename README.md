@@ -18,6 +18,7 @@
    
 
 # Collaborators and assigned tasks
+Thanks goes to these wonderful people.
 
 
 ```mermaid
