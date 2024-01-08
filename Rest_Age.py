@@ -18,7 +18,7 @@ def get_country_data_by_name(country_name):
 
             # Extract the required parameters and return them as a dictionary
                 # --- Construct a formatted message using f-strings for readability ---
-                message = "{name} is a good location for vacation. It has a population of {population} with the {timezones}timezone(s).\nThe capital of {name} is {capital}. It is located under the {continents} continent. \nThe major language(s) spoken is/are {languages}. The region in {name} is {region} while the subregion is {subregion}.\nAs a result of its state of independence being {independence}, it is {status} as a country for vacation.\nThe currency used in {name} is {currencies}.".format(
+                message = "{name} is a good location for vacation. It has a population of {population} with the {timezones}timezone(s).\nThe capital of {name} is {capital}. It is located under the {continents} continent. \nThe major language(s) spoken is/are {languages}. The region in {name} is {region} while the subregion is {subregion}.\nAs a result of its state of independence being {independence}, it is {status} as a country for vacation.\nThe currency used in {name} is {currencies}.\n\n".format(
                     name = rest_api[0]['name']['official'],
                     timezones = ", ".join(rest_api[0]['timezones']),
                     capital = rest_api[0]['capital'][0],
@@ -55,7 +55,7 @@ def predict_age(name_to_predict):
    Args:
        name_to_predict (list): A list of names to predict ages for.
    """
-    with open('group_members_age_prediction.txt','w') as text_file: # Open text file for writing
+    with open('vacation_spot.txt','a') as text_file: # Append this text file to the previous text file
         for name in name_to_predict: 
             agifyurl = f'https://api.agify.io/?name={name}' # Construct API URL with name
             agify_response = requests.get(url=agifyurl) # Send GET request to API
@@ -65,7 +65,7 @@ def predict_age(name_to_predict):
                 pp(agify) # Pretty-print data
 
  # Extract relevant data and format message
-                message = "At {count} count, the API predicted {name}'s age as: {age}\n".format(
+                message = "\tAt {count} count, the API predicted {name}'s age as: {age}\n".format(
                     count = agify['count'], # Number of people in the dataset with the given name
                     name = agify['name'], # The name for which the prediction was made
                     age = agify['age'] # The predicted age
