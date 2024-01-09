@@ -1,7 +1,7 @@
 # GROUP 1 PROJECT - Rest API and Agify API
 
 # Overview of the project
-**Agify API:**  How do you tell the age of someone from their name? Well, here is a fun little API that you can use. Agify is used for predicting the age of a person given their name. It is free to use for up to 1000 requests/day. Agify API was used to predict the ages of Group 1 members.
+**Agify API:**  How do you tell the age of someone from their name? Well, here is a fun little API that you can use. Agify is used for predicting the age of a person given their name. It is free to use for up to 1000 requests/day. Agify API was used to predict the ages of the user. 
 
 ![Guess My Age Wall And Art Print](https://github.com/KateRasheed/Group_1_Project_RestCountriesAPI_AgifyAPI/assets/127479723/5e65f028-c289-4262-b2f9-520283eaa85f)
 
@@ -14,7 +14,8 @@
 1. **Clone the repository** - git clone https://github.com/KateRasheed/Group_1_Project_RestCountriesAPI_AgifyAPI.git
 2. **Change Directory in to the file** - cd Group_1_Project_RestCountriesAPI_AgifyAPI
 3. **Run the program** - python Rest_Age.py
-4. **Follow the prompt to enter desired country**
+4. **Follow the prompt to enter desired country and name**
+
    
 
 # Collaborators and assigned tasks
