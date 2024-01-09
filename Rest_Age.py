@@ -18,7 +18,7 @@ def get_country_data_by_name(country_name):
 
             # Extract the required parameters and return them as a dictionary
                 # --- Construct a formatted message using f-strings for readability ---
-                message = "{name} is a good location for vacation. It has a population of {population} with the {timezones}timezone(s).\nThe capital of {name} is {capital}. It is located under the {continents} continent. \nThe major language(s) spoken is/are {languages}. The region in {name} is {region} while the subregion is {subregion}.\nAs a result of its state of independence being {independence}, it is {status} as a country for vacation.\nThe currency used in {name} is {currencies}.\n\n".format(
+                message = "{name} is considered as a good location for vacation. It has a population of {population} with the {timezones}timezone(s).\nThe capital of {name} is {capital}. It is located under the {continents} continent. \nThe major language(s) spoken is/are {languages}. The region in {name} is {region} while the subregion is {subregion}.\nAs a result of its state of independence being {independence}, it is {status} as a country for vacation.\nThe currency used in {name} is {currencies}.\n\n".format(
                     name = rest_api[0]['name']['official'],
                     timezones = ", ".join(rest_api[0]['timezones']),
                     capital = rest_api[0]['capital'][0],
@@ -32,37 +32,35 @@ def get_country_data_by_name(country_name):
                     subregion = rest_api[0]['subregion']
                 )
                 text_file.write(message) # --- Write the formatted message to the text file ---
-                # return country_data
-            
+                print("The data for your desired country has been written to 'vacation_spot.txt' file.")
              # --- Handle unsuccessful requests by printing an error message ---
         else:
             print(f"Failed to fetch country data. Status code: {api_response.status_code}")
-            return {} # Return an empty dictionary on failure
 
-print("\tWelcome to Rest Travels App!!!\n\tLet's help you get information about your desired vacation spot.")
+
+print("\tWelcome to Rest Travels/Age Insight App!!!\n\tLet's help you get information about your desired vacation spot.\n\tYou can also see the predicted ages of some group members.")
 # Example usage:
         # --- Prompt the user to enter a country name ---
-country_name = input('Enter country of choice: ') # Get input from the user
+country_name = input('Please enter the name of your desired country for vacation: ') # Get input from the user
 # --- Retrieve country data from the API ---
 data = get_country_data_by_name(country_name) # Call the function to fetch data
-pp(data)
 
 
 # Function to predict ages and save results to a text file
-def predict_age(name_to_predict):
+def predict_age(user_prompt, name_to_predict):
     """Predicts ages for a list of names using the Agify API and writes results to a text file.
 
-   Args:
+   Argument:
        name_to_predict (list): A list of names to predict ages for.
    """
+    
     with open('vacation_spot.txt','a') as text_file: # Append this text file to the previous text file
-        for name in name_to_predict: 
+        for count, name in enumerate(name_to_predict, start=1): 
             agifyurl = f'https://api.agify.io/?name={name}' # Construct API URL with name
             agify_response = requests.get(url=agifyurl) # Send GET request to API
  
             if agify_response.status_code == 200: # Check for successful response
                 agify = agify_response.json() # Parse JSON response
-                pp(agify) # Pretty-print data
 
  # Extract relevant data and format message
                 message = "\tAt {count} count, the API predicted {name}'s age as: {age}\n".format(
@@ -74,8 +72,14 @@ def predict_age(name_to_predict):
             else:
                 print(f"Error: {agify_response.status_code}, {agify_response.name}") # Print error message
 
-print("\tWelcome to the Age Insight App!!!\n\tLet's see some predicted ages from the agify api.")
- # List of names to predict ages for
-name_to_predict = ['Busayo', 'Jesulolufemi', 'Lolu', 'Ahmed', 'Fadipe', 'Rasheed', 'Kate', 'Janetoms', 'Oketch', 'Oluwatayo', 'Ameh', 'Omobolanle', 'Fatima', 'Janet', 'Blessing', 'Precious']
+#Ask the user if they would like to see the predicted ages of group members.
+user_prompt = input("Would you like to see the predicted ages of group members (yes/no)? ")
+if user_prompt == 'yes': 
+    print("\tNow, let's see the predicted ages of the group members.")
+    # List of names to predict ages for
+    name_to_predict = ['Busayo', 'Jesulolufemi', 'Lolu', 'Ahmed', 'Fadipe', 'Rasheed', 'Kate', 'Janetoms', 'Oketch', 'Oluwatayo', 'Ameh', 'Omobolanle', 'Fatima', 'Janet', 'Blessing', 'Precious']
+    predict_age(user_prompt, name_to_predict)
+    print("Predicted ages of group members has been added to 'vacation_spot.txt' file.")
+elif user_prompt == 'no':
+    print("Thank you for your input!")
 # Call the function to predict ages and save results
-predict_age(name_to_predict)
