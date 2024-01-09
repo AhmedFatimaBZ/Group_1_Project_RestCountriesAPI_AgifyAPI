@@ -38,7 +38,7 @@ def get_country_data_by_name(country_name):
             print(f"Failed to fetch country data. Status code: {api_response.status_code}")
 
 
-print("\tWelcome to Rest Travels/Age Insight App!!!\n\tLet's help you get information about your desired vacation spot.\n\tYou can also see the predicted ages of some group members.")
+print("\tWelcome to Rest Travels/Age Insight App!!!\n\tLet's help you get information about your desired vacation spot.\n\tYou can also see your predicted age when you input your name.")
 # Example usage:
         # --- Prompt the user to enter a country name ---
 country_name = input('Please enter the name of your desired country for vacation: ') # Get input from the user
@@ -51,12 +51,11 @@ def predict_age(user_prompt, name_to_predict):
     """Predicts ages for a list of names using the Agify API and writes results to a text file.
 
    Argument:
-       name_to_predict (list): A list of names to predict ages for.
+       name_to_predict (input): Get response from the user.
    """
     
     with open('vacation_spot.txt','a') as text_file: # Append this text file to the previous text file
-        for count, name in enumerate(name_to_predict, start=1): 
-            agifyurl = f'https://api.agify.io/?name={name}' # Construct API URL with name
+            agifyurl = f'https://api.agify.io/?name={name_to_predict}' # Construct API URL with name
             agify_response = requests.get(url=agifyurl) # Send GET request to API
  
             if agify_response.status_code == 200: # Check for successful response
@@ -73,13 +72,13 @@ def predict_age(user_prompt, name_to_predict):
                 print(f"Error: {agify_response.status_code}, {agify_response.name}") # Print error message
 
 #Ask the user if they would like to see the predicted ages of group members.
-user_prompt = input("Would you like to see the predicted ages of group members (yes/no)? ")
+user_prompt = input("Would you like to see your age being predicted (yes/no)? ")
 if user_prompt == 'yes': 
-    print("\tNow, let's see the predicted ages of the group members.")
+    print("\tNow, let's see your predicted age.")
     # List of names to predict ages for
-    name_to_predict = ['Busayo', 'Jesulolufemi', 'Lolu', 'Ahmed', 'Fadipe', 'Rasheed', 'Kate', 'Janetoms', 'Oketch', 'Oluwatayo', 'Ameh', 'Omobolanle', 'Fatima', 'Janet', 'Blessing', 'Precious']
+    name_to_predict = input("Enter your name to see your predicted age: ")
     predict_age(user_prompt, name_to_predict)
-    print("Predicted ages of group members has been added to 'vacation_spot.txt' file.")
+    print("Your predicted age has been added to 'vacation_spot.txt' file.")
 elif user_prompt == 'no':
     print("Thank you for your input!")
 # Call the function to predict ages and save results
