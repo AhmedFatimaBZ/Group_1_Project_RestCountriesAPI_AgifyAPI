@@ -39,4 +39,4 @@ graph TD;
 3. Blessing - Added user- input to the rest_api function
 4. Omobolanle - Defined the rest function
 5. Janetoms - Writing it to text file; Rest countries
-6. Jesulolufemi - Added comments to both APIs
+6. Jesulolufemi - Added comments to both APIs and worked on the readme file
